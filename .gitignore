@@ -1,0 +1,45 @@
+# Ignore files and directories created by XAMPP
+
+# Ignore the directory where XAMPP installs the Apache server and server files
+/xampp/
+/apache/logs/
+/apache/fcgi-bin/
+
+# Ignore PHPStorm project files
+.idea/
+
+# Ignore temporary and compiled PHP files
+*.swp
+*~
+*.log
+*.pid
+*.sql
+*.sqlite
+
+# Ignore cache, log, temp, and session folders
+/cache/
+/log/
+/tmp/
+/temp/
+/sessions/
+/vendor/
+
+# Ignore Composer dependencies
+/composer.phar
+/vendor/
+
+# Ignore development environment configuration files
+.env
+
+# Ignore database configuration files
+*.sqlite
+*.db
+*.mysql
+*.pgsql
+
+# Ignore PHP configuration files
+php.ini
+
+# Ignore local Apache configuration files
+httpd.conf
+apache2.conf
