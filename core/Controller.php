@@ -11,6 +11,6 @@ class Controller
     {
         $this->_controllerName = $controller;
         $this->_actionName = $action;
-        var_dump($controller);
+
     }
 }
