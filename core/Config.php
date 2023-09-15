@@ -9,7 +9,7 @@ class Config
         'root_dir'                  => '/cms/',         // This will likely be / on a live server
         'default_controller'        => 'Blog',          // The default home controller
         'default_layout'            => 'default',       // Default layout that is used
-        'db_site_title'             => 'Freeskills',    // Default Site title
+        'default_site_title'        => 'Freeskills',    // Default Site title
         'db_host'                   => '127.0.0.1',     // DB host please use IP address not domain
         'db_name'                   => 'cms',           // DB name
         'db_user'                   => 'root',          // DB user
