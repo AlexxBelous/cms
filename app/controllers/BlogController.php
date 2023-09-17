@@ -6,14 +6,11 @@ use Core\Controller;
 
 class BlogController extends Controller
 {
-    public function indexAction($param1, $param2)
+    public function indexAction()
     {
-        die("You made it to the index action! {$param1} {$param2}");
+        $this->view->render();
     }
 
-    public function fooAction()
-    {
-        die("You made it to the foo action!");
-    }
+
 
 }

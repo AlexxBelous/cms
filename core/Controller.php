@@ -1,6 +1,7 @@
 <?php
 
 namespace Core;
+use Core\{Config, View};
 
 class Controller
 {
@@ -11,6 +12,10 @@ class Controller
     {
         $this->_controllerName = $controller;
         $this->_actionName = $action;
+        $viewPath = strtolower($controller) . '/' . $action;
+        $this->view = new View($viewPath);
+        $this->view->setLayout(Config::get('default_layout'));
+            
 
     }
 }
