@@ -20,6 +20,7 @@
     <?php echo $this->content('head'); ?>
 </head>
 <body>
+<?php echo $this->partial('partials/mainMenu'); ?>
 <div class="container-fluid p-4">
     <?php $this->content('content'); ?>
 </div>
