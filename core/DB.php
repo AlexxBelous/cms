@@ -8,7 +8,8 @@ use Core\{Config, H};
 
 class DB
 {
-    protected  $_dbh, $_result, $_lastInsertId, $_rowCount = 0, $_featchType = PDO::FETCH_OBJ, $_class, $_error = false;
+    protected $_dbh, $_result, $_lastInsertId, $_rowCount = 0, $_featchType = PDO::FETCH_OBJ, $_class, $_error = false;
+    protected $_stmt;
     protected static $_db;
 
     public function __construct()
@@ -32,9 +33,48 @@ class DB
 
     public static function getInstance()
     {
-        if(!self::$_db){
+        if (!self::$_db) {
             self::$_db = new self();
         }
         return self::$_db;
+    }
+
+    public function execute($sql, $bind = [])
+    {
+        $this->_result = null;
+        $this->_lastInsertId = null;
+        $this->_error = false;
+        $this->_stmt = $this->_dbh->prepare($sql);
+        if (!$this->_stmt->execute($bind)) {
+            $this->_error = true;
+        } else {
+            $this->_lastInsertId = $this->_dbh->lastInsertId();
+        }
+        return $this;
+    }
+
+    public function query($sql, $bind = [])
+    {
+        $this->execute($sql, $bind);
+        if (!$this->_error) {
+            $this->_rowCount = $this->_stmt->rowCount();
+            $this->_result = $this->_stmt->fetchAll($this->_featchType);
+        }
+        return $this;
+    }
+
+    public function results()
+    {
+        return $this->_result;
+    }
+
+    public function count()
+    {
+        return $this->_rowCount;
+    }
+
+    public function lastInsertId()
+    {
+        return $this->_lastInsertId;
     }
 }
